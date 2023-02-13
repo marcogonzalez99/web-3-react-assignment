@@ -8,7 +8,7 @@ import Home from './components/Home';
 // Importing Lodash for deepclones
 //import * as cloneDeep from 'lodash/cloneDeep';
 // Importing Route for links
-//import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   // For the movies state
@@ -48,6 +48,10 @@ function App() {
     <main>
       <HeaderApp />
       <Home />
+      {/* <Routes>
+        <Route path='/' component={<Home />}></Route>
+        <Route path='/home' component={<Home />}></Route>
+      </Routes> */}
     </main>
   );
 }
