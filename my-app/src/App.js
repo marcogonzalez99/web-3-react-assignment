@@ -21,7 +21,7 @@ function App() {
         try {
           let dataJson = localStorage.getItem("movies");
           let data;
-          const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=20";
+          const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
           if (!dataJson) {
             //fetch data 
   
