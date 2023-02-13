@@ -18,9 +18,23 @@ function App() {
   useEffect( () => {
     const getData = async () => {
     try { 
-      const url = "";
-      const response = await fetch(url);
-      const data = await response.json();
+      let dataJson = localStorage.getItem("movies");
+      let data;
+      const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
+      if(!dataJson){
+        //fetch data
+        console.log("Fetched!"); 
+        data = await fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          localStorage.setItem("movies", JSON.stringify(data));
+          return data;
+        });
+      }
+      else {
+        data = JSON.parse(dataJson);
+      }
+      console.log(data[0]);
       setMovies(data);
     }
     catch (err) {
