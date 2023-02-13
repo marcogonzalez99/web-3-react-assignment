@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 // Import react
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 // Importing Components
 import HeaderApp from './components/HeaderApp';
 import Home from './components/Home';
@@ -15,34 +15,32 @@ function App() {
   const [movies, setMovies] = useState([]);
 
   // Function to retrive the movie data
-  useEffect( () => {
+  useEffect(() => {
     const getData = async () => {
-    try { 
-      let dataJson = localStorage.getItem("movies");
-      let data;
-      const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=10";
-      if(!dataJson){
-        //fetch data
-        console.log("Fetched!"); 
-        data = await fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          localStorage.setItem("movies", JSON.stringify(data));
-          return data;
-        });
+      if (movies.length <= 0) {
+        try {
+          let dataJson = localStorage.getItem("movies");
+          let data;
+          const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=20";
+          if (!dataJson) {
+            //fetch data 
+  
+            const resp = await fetch(url)
+            data = await resp.json();
+            localStorage.setItem("movies", JSON.stringify(data));
+          }
+          else {
+            data = JSON.parse(dataJson);
+          }
+          setMovies(data);
+        }
+        catch (err) {
+          console.error(err);
+        }
       }
-      else {
-        data = JSON.parse(dataJson);
-      }
-      console.log(data[0]);
-      setMovies(data);
-    }
-    catch (err) {
-      console.error(err);
-    }
-  };
-  getData();
-  }, [] );
+    };
+    getData();
+  }, []);
 
 
   // What we are rendering for the user
