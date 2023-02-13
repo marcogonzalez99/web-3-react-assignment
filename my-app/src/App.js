@@ -47,11 +47,10 @@ function App() {
   return (
     <main>
       <HeaderApp />
-      <Home />
-      {/* <Routes>
-        <Route path='/' component={<Home />}></Route>
-        <Route path='/home' component={<Home />}></Route>
-      </Routes> */}
+        <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+      </Routes>
     </main>
   );
 }
