@@ -16,7 +16,7 @@
   --favorites-back: #def2f1;
   --details-back: #feffff;
   --details-box-back: #def2f1;
-  --header-back: #17252A;
+  --header-back: #17252a;
   --button-back: #3aafa9;
   --border-color: #c2dde6;
   --list-box-back: #feffff;
@@ -33,7 +33,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: normal;
   margin: 0;
   font-size: 1.5em;
@@ -67,8 +72,8 @@ button {
   border: 0;
   color: white;
   padding: 10px;
-  border-radius:5px;
-  font-size: 1em;  
+  border-radius: 5px;
+  font-size: 1em;
 }
 
 .container {
@@ -95,8 +100,6 @@ button {
   padding: 0.5rem;
   place-self: center center;
   justify-content: space-evenly;
-  
-
 }
 .photoBox button {
   padding: 5px;
@@ -115,7 +118,6 @@ button {
 .photoBox button {
   margin: 0 0.5em;
   min-width: 2.5em;
-
 }
 
 img.photoThumb {
@@ -126,14 +128,14 @@ img.photoThumb {
 .details {
   background-color: var(--details-back);
   padding: 0.5em;
-  width: 95%
+  width: 95%;
 }
 .detailsPhotoBox {
   box-sizing: border-box;
   margin: 0.75em;
- 
+
   padding: 1em;
-  background-color: var(--details-box-back)
+  background-color: var(--details-box-back);
 }
 
 figure {
@@ -146,7 +148,7 @@ legend {
   font-size: 1.2em;
 }
 .photoForm img {
-   width: 100%
+  width: 100%;
 }
 
 .favorites {
@@ -163,7 +165,6 @@ legend {
   font-weight: bold;
   text-transform: uppercase;
 }
-
 
 .banner {
   color: white;
