@@ -1,15 +1,20 @@
 // Importing React
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 const Home = props => {
-    let imgURL = "../home_image.jpg";
-
+    let imgURL = 'https://unsplash.com/photos/X93I1fRX1QE';
     return (
-    <div 
-        
-    >
-        <h1 className='font-bold underline'>Hello Home Page</h1>
+    <div className='banner'
+        style={{
+            backgroundImage: `url(${imgURL})`,
+            height: '800px',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat'
+    }}>
+        <div>
+                <h1>Movie Browser</h1>
+        </div>
     </div>  
     );
 }
