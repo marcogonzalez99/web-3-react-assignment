@@ -13,7 +13,7 @@ const Home = props => {
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat'
     }}>
-        <div>
+        <div className='box-border h-320 w-320 bg-midnight'>
                 <h1>Movie Browser</h1>
         </div>
     </div>  
