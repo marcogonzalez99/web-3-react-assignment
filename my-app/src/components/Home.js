@@ -6,7 +6,9 @@ const Home = props => {
     let imgURL = "../home_image.jpg";
 
     return (
-    <div>
+    <div className='banner'
+        
+    >
         <h1>Hello Home Page</h1>
     </div>  
     );
