@@ -19,7 +19,7 @@ const Home = props => {
                 <button className="bg-indigo-500">Show Matching Movies</button>
                 <button className='bg-indigo-500'>Show All Movies</button>
         </div>
-        <p className='fixed bottom-0 text-center p-4 bg-indigo-500 text-white'>Image Retreived From Unsplash, Author: </p>
+        <p className='fixed bottom-0 text-center p-4 text-white'>Image Retreived From Unsplash, Author: </p>
     </div>  
     );
 }
