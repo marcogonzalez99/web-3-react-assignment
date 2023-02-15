@@ -7,9 +7,9 @@ import DefaultView_List from './DefaultView_List'
 const DefaultViewApp = props => {
     const [filtered, setFilter] = React.useState(props.movies);
     const updateFilter = (mode, value, filterType = 0) => {
-        const filteredMovies = props.movies;
+        let filteredMovies = props.movies;
         if (mode == "Title") {
-            filteredMovies = props.movies.filter(movie => movie.title.contains(value));
+            filteredMovies = props.movies.filter(movie => movie.title.toString().includes(value));
             setFilter(filteredMovies);
         }
         else if (mode == "Genre") {
@@ -36,6 +36,7 @@ const DefaultViewApp = props => {
                 filteredMovies = props.movie.filter(movie => movie.ratings >= value);
             }
         }
+
         setFilter(filteredMovies);
     }
     return (
