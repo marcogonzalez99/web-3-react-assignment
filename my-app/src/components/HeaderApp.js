@@ -4,7 +4,7 @@ import HeaderMenu from './HeaderMenu';
 
 const HeaderApp = function (props) {
     return (
-        <header className='header'>
+        <header className='text-white bg-[#17252a] grid-cols-1 items-center gap-10 py-3'>
             <HeaderBar />
             <HeaderMenu />
         </header>
