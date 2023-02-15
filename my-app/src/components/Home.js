@@ -8,12 +8,12 @@ const Home = props => {
     <div className='banner text-white font-bold text-center'
         style={{
             backgroundImage: `url(${imgURL})`,
-            height: '895px',
+            height: '891px',
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat'
     }}>
-        <div className='h-320 w-320 bg-slate'>
+        <div className='bg-slate-500 w-96 h-96'>
                 <h1>Movie Browser</h1>
                 <input type="text" placeholder="Enter search term" className="bg-black p-2 w-340 rounded-lg" />
                 <button className="bg-indigo-500">Show Matching Movies</button>
