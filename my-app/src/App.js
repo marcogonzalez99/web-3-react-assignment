@@ -9,11 +9,11 @@ import Home from './components/Home';
 //import * as cloneDeep from 'lodash/cloneDeep';
 // Importing Route for links
 import { Route, Routes } from 'react-router-dom';
-
+import DefaultViewApp from './components/DefaultViewApp';
 function App() {
   // For the movies state
   const [movies, setMovies] = useState([]);
-
+  const [search, setSearch] = useState("");
   // Function to retrive the movie data
   useEffect(() => {
     const getData = async () => {
@@ -47,11 +47,11 @@ function App() {
   return (
     <main>
       <HeaderApp />
-      <Home />
-      {/* <Routes>
-        <Route path='/' component={<Home />}></Route>
-        <Route path='/home' component={<Home />}></Route>
-      </Routes> */}
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+        <Route path='/browse' element ={<DefaultViewApp movies={movies}/>}></Route>
+      </Routes>
     </main>
   );
 }
