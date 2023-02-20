@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SingleMovieDetailsView = (props) => {
     return (
+    
         <div>
             <h1 className='text-center text-3xl font-bold pt-5'>Welcome to the Single View of the Movie</h1>
             <h2>{props.movie.title}</h2>

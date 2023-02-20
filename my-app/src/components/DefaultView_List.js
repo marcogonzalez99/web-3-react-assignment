@@ -4,6 +4,11 @@ import React from 'react';
 import SingleMovieList from './SingleMovieList';
 
 const DefaultView_List = props => {
+    const propNames = Object.keys(props);
+    const propValues = Object.values(props);
+    console.log("Props passed down from parent:", props);
+    console.log("Prop names:", propNames);
+    console.log("Prop values:", propValues);
     return (
         <div className='center overflow-y-scroll h-screen'>
             <div className='text-3xl font-bold text-center pt-5 mb-3'>Movie List</div>
@@ -20,7 +25,7 @@ const DefaultView_List = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.movies.map( (m,index) => <SingleMovieList onSelectMovie={props.onSelectMovie} movie={m} key={index}/>)}
+                    {props.movies.map( (m,index) => <SingleMovieList handleSelectMovie={props.handleSelectMovie} movie={m} key={index}/>)}
                 </tbody>
             </table>
         </div>

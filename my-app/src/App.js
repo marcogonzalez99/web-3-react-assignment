@@ -17,7 +17,7 @@ function App() {
   const [search, setSearch] = useState("");
 
   // To set the new movie
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(movies[0]);
 
   // Function to retrive the movie data
   useEffect(() => {
@@ -59,7 +59,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/browse' element ={<DefaultViewApp movies={movies} onSelectMovie={handleSelectMovie}/>}></Route>
+        <Route path='/browse' element ={<DefaultViewApp movies={movies} handleSelectMovie={handleSelectMovie}/>}></Route>
         <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie}/>}></Route>
       </Routes>
     </main>
