@@ -47,7 +47,7 @@ const DefaultViewApp = props => {
                 <DefaultView_Filter updateFilter={updateFilter}/>
             </div>
             <div className='w-7/10 bg-gray-300'>
-                <DefaultView_List movies={props.movies}/>
+                <DefaultView_List setIndex={props.setIndex} movies={props.movies}/>
             </div>
             <div className=' flex-grow w-1/10 bg-gray-200'>
                 <DefaultView_Fav />

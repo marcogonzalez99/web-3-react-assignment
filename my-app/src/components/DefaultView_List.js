@@ -20,7 +20,7 @@ const DefaultView_List = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.movies.map( (m,index) => <SingleMovieList movie={m} key={index}/>)}
+                    {props.movies.map( (m,index) => <SingleMovieList onSelectMovie={props.onSelectMovie} movie={m} key={index}/>)}
                 </tbody>
             </table>
         </div>

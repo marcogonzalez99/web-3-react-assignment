@@ -15,10 +15,10 @@ function App() {
   // For the movies state
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
-  const movieId = 0;
 
-  // Function to set the Index
-  setIndex
+  // To set the new movie
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
   // Function to retrive the movie data
   useEffect(() => {
     const getData = async () => {
@@ -47,6 +47,10 @@ function App() {
     getData();
   }, []);
 
+  function handleSelectMovie(id) {
+    const movie = movies.find(movie => movie.id === id);
+    setSelectedMovie(movie);
+  }
 
   // What we are rendering for the user
   return (
@@ -55,8 +59,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/browse' element ={<DefaultViewApp movies={movies}/>}></Route>
-        <Route path='/singleView' element={<SingleMovieDetailsView movie={movies[index]} index={movieId}/>}></Route>
+        <Route path='/browse' element ={<DefaultViewApp movies={movies} onSelectMovie={handleSelectMovie}/>}></Route>
+        <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie}/>}></Route>
       </Routes>
     </main>
   );
