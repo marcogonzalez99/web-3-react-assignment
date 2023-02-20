@@ -22,7 +22,7 @@ const SingleMovieList = props => {
             <td className='text-2xl'><img className='w-10 h-10' src={heart} alt={props.movie.title}></img></td>
             <td className='text-2xl text-white'>
                 <Link to="/singleView">
-                    <button onClick={props.handleSelectMovie(props.movie.id)} className='text-xl bg-[#3aafa9] ml-3 mr-3 px-3 py-2 rounded-md hover:bg-sky-700'>
+                    <button onClick={() => {props.handleSelectMovie(props.movie.id);}}className='text-xl bg-[#3aafa9] ml-3 mr-3 px-3 py-2 rounded-md hover:bg-sky-700'>
                         View
                     </button>
                 </Link>

@@ -1,8 +1,8 @@
 // Import React
 import React from 'react';
-import DefaultView_Fav from './DefaultView_Fav.js'
-import DefaultView_Filter from './DefaultView_Filter.js'
-import DefaultView_List from './DefaultView_List.js'
+import DefaultViewFav from './DefaultView_Fav.js'
+import DefaultViewFilter from './DefaultView_Filter.js'
+import DefaultViewList from './DefaultView_List.js'
 const DefaultViewApp = props => {
     // React controlled form for handling the filter
     const [filtered, setFilter] = React.useState(props.movies);
@@ -42,15 +42,15 @@ const DefaultViewApp = props => {
         setFilter(filteredMovies);
     }
     return (
-        <div className='flex'>
+        <div className='flex h-5/6'>
             <div className='w-1/5 bg-gray-200'>
-                <DefaultView_Filter updateFilter={updateFilter}/>
+                <DefaultViewFilter updateFilter={updateFilter}/>
             </div>
             <div className='w-7/10 bg-gray-300'>
-                <DefaultView_List handleSelectMovie={props.handleSelectMovie} movies={props.movies}/>
+                <DefaultViewList handleSelectMovie={props.handleSelectMovie} movies={props.movies}/>
             </div>
             <div className=' flex-grow w-1/10 bg-gray-200'>
-                <DefaultView_Fav />
+                <DefaultViewFav />
             </div>
         </div>
     )

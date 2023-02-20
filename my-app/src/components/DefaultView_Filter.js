@@ -1,7 +1,7 @@
 // Import React
 import React, { useEffect } from 'react';
 
-const DefaultView_Filter = props => {
+const DefaultViewFilter = props => {
     const [filter, setFilter] = React.useState("0");
     const [filteredValue, setFilterValue] = React.useState("American Beauty");
     const [filterType, setFilterType] = React.useState("0");
@@ -27,4 +27,4 @@ const DefaultView_Filter = props => {
     )
 }
 
-export default DefaultView_Filter;
+export default DefaultViewFilter;

@@ -17,7 +17,7 @@ function App() {
   const [search, setSearch] = useState("");
 
   // To set the new movie
-  const [selectedMovie, setSelectedMovie] = useState(movies[0]);
+  const [selectedMovie, setSelectedMovie] = useState(movies.find(movie => movie.id === 13));
 
   // Function to retrive the movie data
   useEffect(() => {

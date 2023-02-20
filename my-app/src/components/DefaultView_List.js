@@ -3,7 +3,7 @@ import React from 'react';
 //import HeaderApp from './HeaderApp';
 import SingleMovieList from './SingleMovieList';
 
-const DefaultView_List = props => {
+const DefaultViewList = props => {
     const propNames = Object.keys(props);
     const propValues = Object.values(props);
     console.log("Props passed down from parent:", props);
@@ -32,4 +32,4 @@ const DefaultView_List = props => {
     );
 }
 
-export default DefaultView_List;
+export default DefaultViewList;
