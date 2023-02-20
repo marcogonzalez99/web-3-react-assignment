@@ -4,8 +4,7 @@ import React from 'react';
 const DefaultView_Fav = props => {
     return (
      <div>
-        <h1 className='text-center'>Favourites List</h1>
-        <h2>Add Movies to Your Fav List</h2>
+        <h1 className='text-3xl font-bold text-center pt-5'>Favourites List</h1>
      </div> 
     )
 }

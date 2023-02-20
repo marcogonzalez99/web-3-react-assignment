@@ -49,7 +49,7 @@ const DefaultViewApp = props => {
             <div className='w-7/10 bg-gray-300'>
                 <DefaultView_List movies={props.movies}/>
             </div>
-            <div className='w-1/10 bg-gray-400'>
+            <div className=' flex-grow w-1/10 bg-gray-200'>
                 <DefaultView_Fav />
             </div>
         </div>

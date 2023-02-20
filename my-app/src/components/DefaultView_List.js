@@ -6,7 +6,7 @@ import SingleMovieList from './SingleMovieList';
 const DefaultView_List = props => {
     return (
         <div className='center overflow-y-scroll h-screen'>
-            <div className='text-center text-3xl font-bold my-5'>Movie List</div>
+            <div className='text-3xl font-bold text-center pt-5 mb-3'>Movie List</div>
             <table className='table-auto'>
                 <thead className='text-2xl'>
                     <tr>
