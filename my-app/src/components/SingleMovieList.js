@@ -8,12 +8,12 @@ const SingleMovieList = props => {
     return (
         <tr className='border-t-4 border-b-4'>
             <td className='text-sm p-10'><img src={imgURL} alt={props.movie.title}></img></td>
-            <td className='text-2xl w-1/6'>{props.movie.title}</td>
+            <td className='text-2xl w-1'>{props.movie.title}</td>
             <td className='text-2xl text-center'>{year}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.average}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.count}</td>
-            <td className='text-2xl'><img className='w-8 h-8' src={heart} alt={props.movie.title}></img></td>
-            <td className='text-2xl'><button className='text-xl bg-[#3aafa9] mx-2 px-5 rounded-md hover:bg-sky-700'>View</button></td>
+            <td className='text-2xl'><img className='w-10 h-10' src={heart} alt={props.movie.title}></img></td>
+            <td className='text-2xl text-white'><button className='text-xl bg-[#3aafa9] ml-3 mr-3 px-3 py-2 rounded-md hover:bg-sky-700'>View</button></td>
         </tr>
     );
 }
