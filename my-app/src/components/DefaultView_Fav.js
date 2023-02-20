@@ -1,10 +1,12 @@
 // Import React
 import React from 'react';
-import HeaderApp from './HeaderApp';
 
 const DefaultView_Fav = props => {
     return (
-     <div></div> 
+     <div>
+        <h1 className='text-center'>Favourites List</h1>
+        <h2>Add Movies to Your Fav List</h2>
+     </div> 
     )
 }
 

@@ -1,6 +1,5 @@
 // Import React
 import React, { useEffect } from 'react';
-import HeaderApp from './HeaderApp';
 
 const DefaultView_Filter = props => {
     const [filter, setFilter] = React.useState("0");
