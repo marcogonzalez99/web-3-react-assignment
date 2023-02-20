@@ -10,10 +10,15 @@ import Home from './components/Home';
 // Importing Route for links
 import { Route, Routes } from 'react-router-dom';
 import DefaultViewApp from './components/DefaultViewApp';
+import SingleMovieDetailsView from './components/SingleMovieDetailsViewApp';
 function App() {
   // For the movies state
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
+  const movieId = 0;
+
+  // Function to set the Index
+  setIndex
   // Function to retrive the movie data
   useEffect(() => {
     const getData = async () => {
@@ -51,6 +56,7 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/browse' element ={<DefaultViewApp movies={movies}/>}></Route>
+        <Route path='/singleView' element={<SingleMovieDetailsView movie={movies[index]} index={movieId}/>}></Route>
       </Routes>
     </main>
   );
