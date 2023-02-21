@@ -47,15 +47,15 @@ const HeaderMenu = function (props) {
                         <div className='flex flex-wrap'>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://tailwindcss.com/'>Tailwindcss Docs</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://react-bootstrap.github.io/components/table/'>Tables in React</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://reactjs.org/docs/components-and-props.html'>Basic Props Help</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://unsplash.com/@thehalaldesign'>Unsplash Hero Image</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6'>5 Star Rating System</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString'>toLocaleString</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=2'>Movies API</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.imdb.com/'>IMDB</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.themoviedb.org/?language=en-CA'>TMDB</a></li>
                             {/* <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li> */}
                         </div>
                             
