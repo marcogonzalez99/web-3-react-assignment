@@ -6,9 +6,12 @@ const SingleMovieList = props => {
 
     const propNames = Object.keys(props);
     const propValues = Object.values(props);
+    /*
+
     console.log("Props passed down from parent:", props);
     console.log("Prop names:", propNames);
     console.log("Prop values:", propValues);
+    */
     const imgURL = `https://image.tmdb.org/t/p/w92${props.movie.poster}`;
     const year = props.movie.release_date.slice(0,4);
     
