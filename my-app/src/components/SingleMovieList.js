@@ -4,14 +4,6 @@ import { Link } from 'react-router-dom';
 
 const SingleMovieList = props => {
 
-    const propNames = Object.keys(props);
-    const propValues = Object.values(props);
-    /*
-
-    console.log("Props passed down from parent:", props);
-    console.log("Prop names:", propNames);
-    console.log("Prop values:", propValues);
-    */
     const imgURL = `https://image.tmdb.org/t/p/w92${props.movie.poster}`;
     const year = props.movie.release_date.slice(0,4);
     
@@ -22,7 +14,7 @@ const SingleMovieList = props => {
             <td className='text-2xl text-center'>{year}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.average}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.count}</td>
-            <td className='text-2xl'><img className='w-10 h-10' src={heart} alt={props.movie.title}></img></td>
+            <td className='text-2xl'><img className='w-9 h-8' src={heart} alt={props.movie.title}></img></td>
             <td className='text-2xl text-white'>
                 <Link to="/singleView">
                     <button onClick={() => {props.handleSelectMovie(props.movie.id);}}className='text-xl bg-[#3aafa9] ml-3 mr-3 px-3 py-2 rounded-md hover:bg-sky-700'>

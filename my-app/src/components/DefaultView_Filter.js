@@ -24,35 +24,60 @@ const DefaultViewFilter = props => {
         props.updateFilter("Default", 0, 0);
     }
     return (
-        <div>
-            
+        <div>  
             <h1 className='text-3xl font-bold text-center pt-5'>Movie Filters</h1>
-            <form className ="viewFilter">
-                <input type="radio" value="Title" onChange={selectFilter} checked={"Title" === filter}></input>
-                <label>Title</label>
-                <input type="text" disabled ={"Title" != filter} onChange={changeValue}></input>
-
-                <input type="radio" value="Genre" onChange={selectFilter} checked={"Genre" === filter}></input>
-                <label>Genre</label>
-                <input type="text" disabled ={"Genre" != filter} onChange={changeValue}></input>
-
-                <input type="radio" value="Year" onChange={selectFilter} checked={"Year" === filter}></input>
-                <label>Year</label>
-                <input type="text" disabled ={"Year" != filter} onChange={changeValue} ></input>
-                <label>Less</label>
-                <input type="text" disabled ={"Year" != filter} onChange={changeFilterTwo}></input>
-                <label>Greater</label>
+            <form className ="viewFilter mt-5 mx-4">
+                <div className="bg-gray-400 rounded-lg p-5 content-center">
+                    <input type="radio" value="Title" onChange={selectFilter} checked={"Title" === filter}></input>
+                    <label className='text-xl mr-1 ml-1 font-bold'>
+                        Title
+                    </label>
+                    <input className='border-2 border-green-200 w-3/4 p-1' type="text" disabled ={"Title" != filter} onChange={changeValue}></input>
+                </div>
                 
+                <div className="bg-gray-400 rounded-lg p-5 my-3">
+                    <input type="radio" value="Genre" onChange={selectFilter} checked={"Genre" === filter}></input>
+                    <label className='text-xl mr-1 ml-1 font-bold'>
+                        Genre
+                    </label>
+                    <input className='border-2 border-green-200 w-3/4 p-1' type="text" disabled ={"Genre" != filter} onChange={changeValue}></input>
+                </div>
 
-                <input type="radio" value="Rating" onChange={selectFilter} checked={"Rating" === filter}></input>
-                <label>Rating</label>
-                <input type="text" disabled ={"Rating" != filter} onChange={changeValue}></input>
-                <label>Less</label>
-                <input type="text" disabled ={"Rating" != filter} onChange={changeFilterTwo}></input>
-                <label>Greater</label>
+                <div className="bg-gray-400 rounded-lg p-5 my-3">
+                    <input type="radio" value="Year" onChange={selectFilter} checked={"Year" === filter}></input>
+                    <label className='text-xl mr-1 ml-1 font-bold'>
+                        Year
+                    </label>
+                    <div className='mt-5 mb-2'>
+                        <span className='text-lg mr-1 ml-8 font-bold'>Less</span>
+                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Year" != filter} onChange={changeValue} ></input></span>
+                    </div>
+                    <div>
+                        <span className='text-lg mr-1 ml-8 font-bold'>Greater</span>
+                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Year" != filter} onChange={changeValue} ></input></span>
+                    </div>
+                    {/* <input type="text" disabled ={"Year" != filter} onChange={changeFilterTwo}></input> */}
+                </div>
 
-                <button onClick ={submit}>Submit</button>
-                <button onClick = {clear}>Clear</button>
+                <div className="bg-gray-400 rounded-lg p-5 my-3">
+                    <input type="radio" value="Rating" onChange={selectFilter} checked={"Rating" === filter}></input>
+                    <label className='text-xl mr-1 ml-1 font-bold'>
+                        Rating
+                    </label>
+
+                    <div className='mt-5 mb-2'>
+                        <span className='text-lg mr-1 ml-8 font-bold'>Less</span>
+                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Rating" != filter} onChange={changeValue}></input></span>
+                    </div>
+
+                    <div>
+                    <span className='text-lg mr-1 ml-8 font-bold'>Greater</span>
+                    <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Rating" != filter} onChange={changeValue}></input></span>
+                    </div>
+                    {/* <input type="text" disabled ={"Rating" != filter} onChange={changeFilterTwo}></input> */}
+                </div>
+                <button className='text-white text-xl bg-[#3aafa9] mx-2 px-5 rounded hover:bg-sky-700' onClick ={submit}>Submit</button>
+                <button className='text-white text-xl bg-[#3aafa9] mx-2 px-5 rounded hover:bg-sky-700' onClick = {clear}>Clear</button>
             </form>
         </div>
     )

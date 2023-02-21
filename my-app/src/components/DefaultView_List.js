@@ -4,13 +4,7 @@ import React from 'react';
 import SingleMovieList from './SingleMovieList';
 
 const DefaultViewList = props => {
-    const propNames = Object.keys(props);
-    const propValues = Object.values(props);
-    /*
-    console.log("Props passed down from parent:", props);
-    console.log("Prop names:", propNames);
-    console.log("Prop values:", propValues);
-    */
+
     return (
         <div className='center overflow-y-scroll h-screen'>
             <div className='text-3xl font-bold text-center pt-5 mb-3'>Movie List</div>

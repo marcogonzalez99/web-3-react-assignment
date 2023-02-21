@@ -7,7 +7,7 @@ const HeaderMenu = function (props) {
             <button className='text-xl bg-[#3aafa9] mx-2 px-5 rounded hover:bg-sky-700'>Home</button>
             </Link>
             <Link to='/browse'>
-            <button className='text-xl bg-[#3aafa9] mx-2 px-5 roundedb hover:bg-sky-700'>All Movies</button>
+            <button className='text-xl bg-[#3aafa9] mx-2 px-5 rounded hover:bg-sky-700'>All Movies</button>
             </Link>
         </nav>
     );
