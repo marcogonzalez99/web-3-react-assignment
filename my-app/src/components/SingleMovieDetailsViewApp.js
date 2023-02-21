@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 import heart from '../add_to_fav.png';
+import Modal from 'react-modal';
 
 const SingleMovieDetailsView = (props) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+    }
     const imgURL = `https://image.tmdb.org/t/p/w342${props.movie.poster}`;
+    const imgURLModal = `https://image.tmdb.org/t/p/w500${props.movie.poster}`;
     const TMDB = `https://www.themoviedb.org/movie/${props.movie.tmdb_id}`;
     const IMDB = `https://www.imdb.com/title/${props.movie.imdb_id}`;
     const revenueToString = props.movie.revenue.toLocaleString();
@@ -11,7 +23,21 @@ const SingleMovieDetailsView = (props) => {
         <div className="flex h-screen">
             <div className="w-1/3 h-full p-2 bg-gray-200">
                 <h1 className='pl-10 text-4xl font-bold pt-5'>{props.movie.title}</h1>
-                <img className='pl-10 pt-5' src={imgURL} alt={props.movie.title}></img>
+                <img className='pl-10 pt-5' src={imgURL} alt={props.movie.title} onMouseEnter={openModal}></img>
+                <Modal
+                isOpen={isOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                style={{
+                    content:{
+                        width: '50%',
+                        height: '90%',
+                        margin: 'auto'
+                    }
+                }}>
+                    <img className='pl-10 pt-5 m-auto' src={imgURLModal} alt={props.movie.title}></img>
+                    <button className='absolute bottom-5 left-5 text-xl text-white bg-[#3aafa9] mx-2 px-5 rounded hover:bg-sky-700' onClick={closeModal}>Close Modal</button>
+                </Modal>
             </div>
             <div className="w-1/3 px-4 pt-4 bg-gray-300">
                 {/* This will handle the first view for the basic movie information */}
