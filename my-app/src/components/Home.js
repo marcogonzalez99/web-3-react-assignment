@@ -23,6 +23,7 @@ const Home = props => {
                 
             </div>
                 <p className='fixed bottom-0 text-center p-4 text-white'>Image Retreived From Unsplash, Author: https://unsplash.com/@thehalaldesign</p>
+                <p className='fixed bottom-5 text-center p-4 text-white'>Logo Retrived From: https://www.behance.net/gallery/29632909/Random-Logo-1</p>
         </div> 
     );
 }
