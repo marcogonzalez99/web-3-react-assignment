@@ -20,6 +20,13 @@ const SingleMovieDetailsView = (props) => {
     // For the Modal settings, to see if we should be opening or closing the Modal popup
     const [isOpen, setIsOpen] = useState(false);
 
+    // To Handle the user rating the movie
+    const [userRating, setUserRating] = useState(0);
+
+    const handleRating = (newRating) => {
+        setUserRating(newRating);
+    };
+
     // This sets the Modal to true, which displays the Popup image
     const openModal = () => {
         setIsOpen(true);
@@ -143,6 +150,27 @@ const SingleMovieDetailsView = (props) => {
                 <Link to="/browse">
                     <button className='text-white text-xl bg-[#3aafa9] mt-5 px-5 py-2 rounded-md hover:bg-sky-700'>Close</button>
                 </Link>
+                <div className='mt-5 p-4 bg-gray-300 rounded-sm'>
+                    <p className="text-lg font-bold mb-4">Rate this product:</p>
+                    <div className="flex">
+                        {[1, 2, 3, 4, 5].map((value) => (
+                        <button
+                            key={value}
+                            className={`text-6xl ${
+                            userRating >= value ? "text-green-600" : "text-black-400"
+                            }`}
+                            onClick={() => handleRating(value)}
+                        >
+                            ★
+                        </button>
+                        ))}
+                    </div>
+                    <p className="mt-2">
+                        {userRating > 0
+                        ? `You have rated this product ${userRating} out of 5 stars.`
+                        : "Please rate this product."}
+                    </p>
+                </div>
             </div>
         </div>
     );
