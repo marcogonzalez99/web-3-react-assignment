@@ -129,13 +129,13 @@ const SingleMovieDetailsView = (props) => {
                         ))} */}
                         <div className="flex">
                         {[...Array(fullStars)].map((_, i) => (
-                            <FaStar key={i} className="h-10 w-10 text-green-500" />
+                            <FaStar key={i} className="h-10 w-10 text-[#3aafa9]" />
                         ))}
                         {[...Array(halfStars > 0 ? 1 : 0)].map((_, i) => (
-                            <FaStarHalfAlt key={i} className="h-10 w-10 text-green-500" />
+                            <FaStarHalfAlt key={i} className="h-10 w-10 text-[#3aafa9]" />
                         ))}
                         {[...Array(emptyStars)].map((_, i) => (
-                            <FaRegStar key={i} className="h-10 w-10 text-green-500" />
+                            <FaRegStar key={i} className="h-10 w-10 text-[#3aafa9]" />
                         ))}
                         </div>
                     </div>
@@ -157,7 +157,7 @@ const SingleMovieDetailsView = (props) => {
                         <button
                             key={value}
                             className={`text-6xl ${
-                            userRating >= value ? "text-green-600" : "text-black-400"
+                            userRating >= value ? "text-[#3aafa9]" : "text-black-400"
                             }`}
                             onClick={() => handleRating(value)}
                         >
