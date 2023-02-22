@@ -55,8 +55,8 @@ const HeaderMenu = function (props) {
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=2'>Movies API</a></li>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.imdb.com/'>IMDB</a></li>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.themoviedb.org/?language=en-CA'>TMDB</a></li>
-                            {/* <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
-                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li> */}
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://reactjs.org/docs/error-boundaries.html'>ErrorBoundary</a></li>
+                            <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
                         </div>
                             
                     </div>
