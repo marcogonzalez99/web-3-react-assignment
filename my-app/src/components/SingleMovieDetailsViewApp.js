@@ -90,7 +90,7 @@ const SingleMovieDetailsView = (props) => {
                     <h2 className="text-lg font-bold mb-4">Ratings</h2>
                     <div className="flex items-center mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Popularity:</span>
-                        <span className="text-gray-900">{props.movie.ratings.popularity}</span>
+                        <span className="text-gray-900">{Math.floor(props.movie.ratings.popularity)}</span>
                     </div>
                     <div className="flex items-center mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Average:</span>
