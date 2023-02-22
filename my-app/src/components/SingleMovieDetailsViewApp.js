@@ -143,7 +143,7 @@ const SingleMovieDetailsView = (props) => {
                 </div>
             </div>
             <div className="w-1/3 p-4 bg-gray-200">
-                <div className="flex items-center text-white text-xl bg-[#3aafa9] mt-5 px-4 py-2 rounded-md hover:bg-sky-700 w-72 cursor-pointer ">
+                <div onClick={() => {props.updateFavourites(props.movie.id)}} className="flex items-center text-white text-xl bg-[#3aafa9] mt-5 px-4 py-2 rounded-md hover:bg-sky-700 w-72 cursor-pointer ">
                     <img className='w-11 h-10 ' src={heart} alt={props.movie.title}></img>
                     <h1 className='text-2xl ml-4'>Add To Favourites</h1>
                 </div>

@@ -4,9 +4,10 @@ import React, { useEffect } from 'react';
 const DefaultViewFilter = props => {
     const [filter, setFilter] = React.useState("0");
     const [filteredValue, setFilterValue] = React.useState("");
-    const [filterSecond, setSecondFilter] = React.useState("1");
+    const [filterSecond, setSecondFilter] = React.useState("");
     function selectFilter (e) {
         setFilterValue("");
+        setSecondFilter("");
         setFilter(e.target.value);
     }
     function submit (e){
@@ -22,6 +23,8 @@ const DefaultViewFilter = props => {
     function clear (e){
         e.preventDefault();
         props.updateFilter("Default", 0, 0);
+        setFilterValue("");
+        setSecondFilter("");
     }
     return (
         <div>  
@@ -32,7 +35,7 @@ const DefaultViewFilter = props => {
                     <label className='text-xl mr-1 ml-1 font-bold'>
                         Title
                     </label>
-                    <input className='border-2 border-green-200 w-3/4 p-1' type="text" disabled ={"Title" != filter} onChange={changeValue}></input>
+                    <input className='border-2 border-green-200 w-3/4 p-1' value={filteredValue} type="text" disabled ={"Title" != filter} onChange={changeValue}></input>
                 </div>
                 
                 <div className="bg-gray-400 rounded-lg p-5 my-3">
@@ -40,7 +43,7 @@ const DefaultViewFilter = props => {
                     <label className='text-xl mr-1 ml-1 font-bold'>
                         Genre
                     </label>
-                    <input className='border-2 border-green-200 w-3/4 p-1' type="text" disabled ={"Genre" != filter} onChange={changeValue}></input>
+                    <input className='border-2 border-green-200 w-3/4 p-1' value={filteredValue} type="text" disabled ={"Genre" != filter} onChange={changeValue}></input>
                 </div>
 
                 <div className="bg-gray-400 rounded-lg p-5 my-3">
@@ -50,11 +53,11 @@ const DefaultViewFilter = props => {
                     </label>
                     <div className='mt-5 mb-2'>
                         <span className='text-lg mr-1 ml-8 font-bold'>Less</span>
-                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Year" != filter} onChange={changeValue} ></input></span>
+                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" value={filterSecond} disabled ={"Year" != filter} onChange={changeFilterTwo} ></input></span>
                     </div>
                     <div>
                         <span className='text-lg mr-1 ml-8 font-bold'>Greater</span>
-                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Year" != filter} onChange={changeValue} ></input></span>
+                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" value={filteredValue} disabled ={"Year" != filter} onChange={changeValue} ></input></span>
                     </div>
                     {/* <input type="text" disabled ={"Year" != filter} onChange={changeFilterTwo}></input> */}
                 </div>
@@ -67,12 +70,12 @@ const DefaultViewFilter = props => {
 
                     <div className='mt-5 mb-2'>
                         <span className='text-lg mr-1 ml-8 font-bold'>Less</span>
-                        <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Rating" != filter} onChange={changeValue}></input></span>
+                        <span><input className='border-2 border-green-200 w-3/5 p-1' value={filterSecond} type="text" disabled ={"Rating" != filter} onChange={changeFilterTwo}></input></span>
                     </div>
 
                     <div>
                     <span className='text-lg mr-1 ml-8 font-bold'>Greater</span>
-                    <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" disabled ={"Rating" != filter} onChange={changeValue}></input></span>
+                    <span><input className='border-2 border-green-200 w-3/5 p-1' type="text" value={filteredValue} disabled ={"Rating" != filter} onChange={changeValue}></input></span>
                     </div>
                     {/* <input type="text" disabled ={"Rating" != filter} onChange={changeFilterTwo}></input> */}
                 </div>

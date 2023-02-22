@@ -15,10 +15,10 @@ function App() {
   // For the movies state
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
-
+  const [favourited, setFavourites] = React.useState([]);
+ 
   // To set the new movie
   const [selectedMovie, setSelectedMovie] = useState(movies.find(movie => movie.id === 13));
-
   // Function to retrive the movie data
   useEffect(() => {
     const getData = async () => {
@@ -46,7 +46,18 @@ function App() {
     };
     getData();
   }, []);
-
+  const updateFavourites = (favId) =>{
+    let favouritedMovies = favourited;
+    if(favourited.findIndex(f => f.id === favId) != -1){
+        return;
+    }
+    else{
+        favouritedMovies.push(movies[movies.findIndex(movie => movie.id === favId)]);
+    }
+    setFavourites(favouritedMovies);
+    console.log("why");
+    console.log(favourited);
+}
   function handleSelectMovie(id) {
     const movie = movies.find(movie => movie.id === id);
     setSelectedMovie(movie);
@@ -59,8 +70,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/browse' element ={<DefaultViewApp movies={movies} handleSelectMovie={handleSelectMovie}/>}></Route>
-        <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie}/>}></Route>
+        <Route path='/browse' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie} />}></Route>
+        <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie} updateFavourites={updateFavourites}/>}></Route>
       </Routes>
     </main>
   );

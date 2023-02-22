@@ -6,22 +6,23 @@ import DefaultViewList from './DefaultView_List.js'
 const DefaultViewApp = props => {
     // React controlled form for handling the filter
     const [filtered, setFilter] = React.useState(props.movies);
-    useEffect(() => {
-        updateFilter("Year", 1991, 1999);
-        //updateFilter("Rating", 5, 8);
+    const [newFavourite, updateFavourite] = React.useState(0);
 
-    }, [])
+    const setNewFavourite = () => {
+        updateFavourite(newFavourite + 1);
+    }
+    
     const updateFilter = (mode, value, value2) => {
         let filteredMovies = props.movies;
         if (mode == "Title") {
-            filteredMovies = props.movies.filter(movie => movie.title.toString().includes(value));
+            filteredMovies = props.movies.filter(movie => movie.title.toString().toLowerCase().includes(value.toLowerCase()));
             setFilter(filteredMovies);
         }
         else if (mode == "Genre") {  
             filteredMovies = props.movies.filter(movie => {
                 let movieDetails = movie.details.genres;
                 if(movie.details.genres){
-                    return movieDetails.some(e => e.name === value)
+                    return movieDetails.some(e => e.name == value)
                 }
                 else{
                     return false;
@@ -34,16 +35,40 @@ const DefaultViewApp = props => {
                 let date = new Date(value, 0);
                 let date2 = new Date(value2, 0);
                 let movieDate = Date.parse(movie.release_date);
-                if(date <= movieDate && date2 >= movieDate){
+                if((isNaN(value) || value == "") && (isNaN(value2) || value2 == "")){
+          
                     return true;
                 }
+                if(value == "" || isNaN(value)){
+                    return (date2 >= movieDate)
+                }
+                else if(value2 == "" || isNaN(value2)){
 
-                return false;
+                    return (date <= movieDate)
+                }
+                else{
+    
+                    return (date <= movieDate && date2 >= movieDate)
+                }
 
             });
         }
         else if(mode == "Rating"){
-            filteredMovies = props.movies.filter(movie => (movie.ratings.average >= value && movie.ratings.average <= value2));
+            filteredMovies = props.movies.filter(movie => {
+                if((isNaN(value) || value == "") && (isNaN(value2) || value2 == "")){
+                    return true;
+                }
+                if(isNaN(value) || value == ""){
+                    return (movie.rating.average >= value2)
+                }
+                else if(isNaN(value2) || value2 == ""){
+                    return (movie.rating.average <= value)
+                }
+                else{
+                    return (movie.ratings.average >= value && movie.ratings.average <= value2)
+                }
+                
+            });
         }
         console.log(filteredMovies);
         setFilter(filteredMovies);
@@ -54,10 +79,10 @@ const DefaultViewApp = props => {
                 <DefaultViewFilter updateFilter={updateFilter}/>
             </div>
             <div className='w-7/10 bg-gray-300'>
-                <DefaultViewList handleSelectMovie={props.handleSelectMovie} movies={filtered}/>
+                <DefaultViewList handleSelectMovie={props.handleSelectMovie} updateFavourites={props.updateFavourites} movies={filtered} setNewFavourite={setNewFavourite}/>
             </div>
             <div className=' flex-grow w-1/10 bg-gray-200'>
-                <DefaultViewFav />
+                <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited}/>
             </div>
         </div>
     )

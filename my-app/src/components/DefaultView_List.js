@@ -21,7 +21,7 @@ const DefaultViewList = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.movies.map( (m,index) => <SingleMovieList handleSelectMovie={props.handleSelectMovie} movie={m} key={index}/>)}
+                    {props.movies.map( (m,index) => <SingleMovieList handleSelectMovie={props.handleSelectMovie} movie={m} setNewFavourite = {props.setNewFavourite} updateFavourites={props.updateFavourites} key={index}/>)}
                 </tbody>
             </table>
         </div>
