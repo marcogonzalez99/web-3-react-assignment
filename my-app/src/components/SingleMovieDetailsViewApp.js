@@ -1,27 +1,35 @@
 import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
-import heart from '../add_to_fav.png';
+// import heart from '../add_to_fav.png';
 import Modal from 'react-modal';
 
 // For the stars rating
-import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
+// import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 
 const SingleMovieDetailsView = (props) => {
 
     // Get the average rating from the movie object
-    const rating = (props.movie.ratings.average/2).toFixed(1);
+    //const rating = (props.movie.ratings.average/2).toFixed(1);
     // Calculate the number of full stars to display
-    const fullStars = Math.floor(rating);
+    //const fullStars = Math.floor(rating);
     // Calculate the number of half stars to display
-    const halfStars = Math.round((rating - fullStars) * 2) / 2;
+    //const halfStars = Math.round((rating - fullStars) * 2) / 2;
     // Create an array of empty stars to fill in the remaining space
-    const emptyStars = 5 - fullStars - halfStars;
+    //const emptyStars = 5 - fullStars - halfStars;
 
     // For the Modal settings, to see if we should be opening or closing the Modal popup
     const [isOpen, setIsOpen] = useState(false);
 
     // To Handle the user rating the movie
     const [userRating, setUserRating] = useState(0);
+
+    // To Handle adding to fav Snackbar
+    const [snackBarIsOpen, setSnackBarIsOpen] = useState(false);
+
+    const handleSnackBarClick = () => {
+        setSnackBarIsOpen(true);
+        setTimeout(() => setSnackBarIsOpen(false), 3000);
+    }
 
     const handleRating = (newRating) => {
         setUserRating(newRating);
@@ -46,7 +54,7 @@ const SingleMovieDetailsView = (props) => {
         <div className="flex h-screen">
             <div className="w-1/3 h-full p-2 bg-gray-200">
                 <h1 className='pl-10 text-4xl font-bold pt-5'>{props.movie.title}</h1>
-                <img className='pl-10 pt-5' src={imgURL} alt={props.movie.title} onMouseEnter={openModal}></img>
+                <img className='pl-10 pt-5' src={imgURL} alt={props.movie.title} onClick={openModal}></img>
                 <Modal
                 isOpen={isOpen}
                 onRequestClose={closeModal}
@@ -111,11 +119,11 @@ const SingleMovieDetailsView = (props) => {
                 <div className="flex items-center mt-5">
                     <span className="text-2xl font-bold mr-2 text-gray-700">Rating:</span>
                     <div className="flex items-center">
-                        {/* {[...Array(5)].map((_, index) => (
+                        {[...Array(5)].map((_, index) => (
                         <svg
                             key={index}
                             className={`h-10 w-10 ${
-                            index < Math.floor(props.movie.ratings.average/2) ? "text-green-500" : "text-black-300"
+                            index < Math.floor(props.movie.ratings.average/2) ? "text-[#3aafa9]" : "text-black-300"
                             }`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
@@ -126,8 +134,8 @@ const SingleMovieDetailsView = (props) => {
                             clipRule="evenodd"
                             />
                         </svg>
-                        ))} */}
-                        <div className="flex">
+                        ))}
+                        {/* <div className="flex">
                         {[...Array(fullStars)].map((_, i) => (
                             <FaStar key={i} className="h-10 w-10 text-[#3aafa9]" />
                         ))}
@@ -137,14 +145,24 @@ const SingleMovieDetailsView = (props) => {
                         {[...Array(emptyStars)].map((_, i) => (
                             <FaRegStar key={i} className="h-10 w-10 text-[#3aafa9]" />
                         ))}
-                        </div>
+                        </div> */}
                     </div>
                     <span className="ml-2 text-2xl text-gray-700">{props.movie.ratings.average/2} Stars - ({ratingsToString} ratings)</span>
                 </div>
             </div>
             <div className="w-1/3 p-4 bg-gray-200">
-                <div onClick={() => {props.updateFavourites(props.movie.id)}} className="flex items-center text-white text-xl bg-[#3aafa9] mt-5 px-4 py-2 rounded-md hover:bg-sky-700 w-72 cursor-pointer ">
-                    <img className='w-11 h-10 ' src={heart} alt={props.movie.title}></img>
+                <div onClick={() => {
+                    props.updateFavourites(props.movie.id);
+                    handleSnackBarClick();
+                    }} className="flex items-center text-white text-xl bg-[#3aafa9] mt-5 px-4 py-2 rounded-md hover:bg-sky-700 w-72 cursor-pointer ">
+                    {
+                        snackBarIsOpen && (
+                        <div className="bg-gray-800 text-white py-5 px-10 rounded-md shadow-md mt-4 absolute top-[425px] right-[350px]">
+                            <span className="block font-bold mb-2">{props.movie.title}</span>
+                            <span> is in your Favourites</span>
+                        </div>
+                    )}
+                    {/* <img className='w-11 h-10 ' src={heart} alt={props.movie.title}></img> */}
                     <h1 className='text-2xl ml-4'>Add To Favourites</h1>
                 </div>
                 <Link to="/browse">
