@@ -3,14 +3,29 @@ import { Link } from 'react-router-dom';
 import heart from '../add_to_fav.png';
 import Modal from 'react-modal';
 
+// For the stars rating
+import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
+
 const SingleMovieDetailsView = (props) => {
 
+    // Get the average rating from the movie object
+    const rating = (props.movie.ratings.average/2).toFixed(1);
+    // Calculate the number of full stars to display
+    const fullStars = Math.floor(rating);
+    // Calculate the number of half stars to display
+    const halfStars = Math.round((rating - fullStars) * 2) / 2;
+    // Create an array of empty stars to fill in the remaining space
+    const emptyStars = 5 - fullStars - halfStars;
+
+    // For the Modal settings, to see if we should be opening or closing the Modal popup
     const [isOpen, setIsOpen] = useState(false);
 
+    // This sets the Modal to true, which displays the Popup image
     const openModal = () => {
         setIsOpen(true);
     }
 
+    // This sets the Modal to false, which hides the display of the popup Image
     const closeModal = () => {
         setIsOpen(false);
     }
@@ -19,6 +34,7 @@ const SingleMovieDetailsView = (props) => {
     const TMDB = `https://www.themoviedb.org/movie/${props.movie.tmdb_id}`;
     const IMDB = `https://www.imdb.com/title/${props.movie.imdb_id}`;
     const revenueToString = props.movie.revenue.toLocaleString();
+    const ratingsToString = props.movie.ratings.count.toLocaleString();
     return (
         <div className="flex h-screen">
             <div className="w-1/3 h-full p-2 bg-gray-200">
@@ -78,17 +94,17 @@ const SingleMovieDetailsView = (props) => {
                     </div>
                     <div className="flex items-center mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Average:</span>
-                        <span className="text-gray-900">{props.movie.ratings.average} Stars</span>
+                        <span className="text-gray-900">{props.movie.ratings.average/2} Stars</span>
                     </div>
                     <div className="flex items-center mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Count:</span>
-                        <span className="text-gray-900">{props.movie.ratings.count} Reviews</span>
+                        <span className="text-gray-900">{ratingsToString} Reviews</span>
                     </div>
                 </div>
                 <div className="flex items-center mt-5">
                     <span className="text-2xl font-bold mr-2 text-gray-700">Rating:</span>
                     <div className="flex items-center">
-                        {[...Array(5)].map((_, index) => (
+                        {/* {[...Array(5)].map((_, index) => (
                         <svg
                             key={index}
                             className={`h-10 w-10 ${
@@ -103,9 +119,20 @@ const SingleMovieDetailsView = (props) => {
                             clipRule="evenodd"
                             />
                         </svg>
+                        ))} */}
+                        <div className="flex">
+                        {[...Array(fullStars)].map((_, i) => (
+                            <FaStar key={i} className="h-10 w-10 text-green-500" />
                         ))}
+                        {[...Array(halfStars > 0 ? 1 : 0)].map((_, i) => (
+                            <FaStarHalfAlt key={i} className="h-10 w-10 text-green-500" />
+                        ))}
+                        {[...Array(emptyStars)].map((_, i) => (
+                            <FaRegStar key={i} className="h-10 w-10 text-green-500" />
+                        ))}
+                        </div>
                     </div>
-                    <span className="ml-2 text-2xl text-gray-700">{props.movie.ratings.average} ({props.movie.ratings.count} ratings)</span>
+                    <span className="ml-2 text-2xl text-gray-700">{props.movie.ratings.average/2} Stars - ({ratingsToString} ratings)</span>
                 </div>
             </div>
             <div className="w-1/3 p-4 bg-gray-200">
