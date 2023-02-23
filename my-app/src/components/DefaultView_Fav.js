@@ -23,7 +23,10 @@ const DefaultViewFav = props => {
                 <span>
                     <img className='relative inline-block' src={`${imgURL}${m.poster}`} alt={m.title} ></img>
                     {hover && (
-                        <button className="absolute top-0 right-0 p-2 text-black rounded-full">
+                        <button onClick ={() =>{
+                            props.updateFavourites(m.id, 0);
+                            props.setNewFavourite();
+                         }} className="absolute top-0 right-0 p-2 text-black rounded-full">
                         X
                         </button>
                     )}

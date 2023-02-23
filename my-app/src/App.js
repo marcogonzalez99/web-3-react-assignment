@@ -46,17 +46,28 @@ function App() {
     };
     getData();
   }, []);
-  const updateFavourites = (favId) =>{
+  const updateFavourites = (favId, mode) =>{
+    
     let favouritedMovies = favourited;
-    if(favourited.findIndex(f => f.id === favId) != -1){
+    if (mode) {
+      if(favourited.findIndex(f => f.id === favId) != -1){
         return;
+      }
+      else{
+        let movieIndex = movies.findIndex(movie => movie.id === favId);
+        if(movieIndex != -1){
+          favouritedMovies.push(movies[movieIndex]);
+        }
+      }
+        
     }
     else{
-        favouritedMovies.push(movies[movies.findIndex(movie => movie.id === favId)]);
+      let removeIndex = favouritedMovies.findIndex(movie => movie.id === favId);
+      if(removeIndex != -1){
+        favouritedMovies = movies.splice(removeIndex, removeIndex);
+      }
     }
     setFavourites(favouritedMovies);
-    console.log("why");
-    console.log(favourited);
 }
   function handleSelectMovie(id) {
     const movie = movies.find(movie => movie.id === id);

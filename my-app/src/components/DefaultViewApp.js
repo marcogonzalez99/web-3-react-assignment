@@ -82,7 +82,7 @@ const DefaultViewApp = props => {
                 <DefaultViewList handleSelectMovie={props.handleSelectMovie} updateFavourites={props.updateFavourites} movies={filtered} setNewFavourite={setNewFavourite}/>
             </div>
             <div className=' flex-grow w-1/10 bg-gray-200'>
-                <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited}/>
+                <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited} updateFavourites={props.updateFavourites} setNewFavourite={setNewFavourite}/>
             </div>
         </div>
     )

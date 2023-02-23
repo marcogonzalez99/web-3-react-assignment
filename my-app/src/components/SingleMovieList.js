@@ -26,9 +26,9 @@ const SingleMovieList = props => {
             <td className='text-2xl text-center'>{props.movie.ratings.count}</td>
             <div className='relative top-[86px] right-2 rounded bg-[#3aafa9] pt-2 px-2'>
                 <td className='text-2xl '><button onClick={() => 
-                    {
-                        props.setNewFavourite(); 
-                        props.updateFavourites(props.movie.id);
+                    { 
+                        props.updateFavourites(props.movie.id, 1);
+                        props.setNewFavourite();
                         handleSnackBarClick();
                     }}><img className='w-10 h-8 ' src={heart} alt={props.movie.title}></img></button></td>
                 {
