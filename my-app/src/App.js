@@ -64,7 +64,7 @@ function App() {
     else{
       let removeIndex = favouritedMovies.findIndex(movie => movie.id === favId);
       if(removeIndex != -1){
-        favouritedMovies = movies.splice(removeIndex, removeIndex);
+        favouritedMovies = favourited.splice(removeIndex, removeIndex);
       }
     }
     setFavourites(favouritedMovies);
