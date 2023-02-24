@@ -7,14 +7,18 @@ const DefaultViewApp = props => {
     // React controlled form for handling the filter
     const [filtered, setFilter] = React.useState(props.movies);
     const [newFavourite, updateFavourite] = React.useState(0);
+    /*
     useEffect(() => {
         if(props.search != null && props.search !== ""){
             updateFilter("Title", props.search, 0);
         }
      }, []);
+     */
+
     const setNewFavourite = () => {
         updateFavourite(newFavourite + 1);
     }
+    
     const updateSort = (mode) => {
         let sortedArray = filtered;
         if(mode === "Title"){
@@ -41,7 +45,6 @@ const DefaultViewApp = props => {
         else if (mode === "Popularity"){
             sortedArray = filtered.sort((a, b) => (a.ratings.count > b.ratings.count) ? 1 : ((a.ratings.count < b.ratings.count) ? -1 : 0) )
         }
-        console.log("??");
         setFilter(sortedArray);
         updateFavourite(newFavourite + 1);
     }

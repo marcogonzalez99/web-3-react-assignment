@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const SingleMovieList = props => {
 
     // This will handle place holder errors, source code from https://stackoverflow.com/questions/34097560/react-js-replace-img-src-onerror
-    const [imageSRC, setImageSRC] = useState(`https://image.tmdb.org/t/p/w92${props.movie.poster}`)
+    const [imageSRC, setImageSRC] = useState(`{props.movie.poster}`)
     const placeHolderIMG = `https://via.placeholder.com/92`;
 
-    const handleImageError = () => {
-        setImageSRC(placeHolderIMG);
+    const handleImageError = (e) => {
+        e.target.src = placeHolderIMG;
     }
 
     // Slicing the release_date to only have the year of the movie
@@ -27,7 +27,7 @@ const SingleMovieList = props => {
         <tr className='border-t-4 border-b-4'>
             <td className='text-sm p-10'>
                 <Link to='/singleView'>
-                    <img onClick={() => {props.handleSelectMovie(props.movie.id);}} src={imageSRC} alt={props.movie.title} onError={handleImageError}></img>
+                    <img onClick={() => {props.handleSelectMovie(props.movie.id);}} src={"https://image.tmdb.org/t/p/w92" + props.movie.poster} alt={props.movie.title} onError={handleImageError}></img>
                 </Link>
             </td>
             <td className='text-2xl w-1' onClick={() => {props.handleSelectMovie(props.movie.id);}}><Link to='/singleView'>{props.movie.title}</Link></td>
