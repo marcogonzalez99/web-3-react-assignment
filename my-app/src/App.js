@@ -46,7 +46,7 @@ function App() {
       }
     };
     getData();
-  }, []);
+  }, [movies.length]);
   const updateSearch = (searchTerm) => {
     setSearch(searchTerm);
   }
@@ -54,12 +54,12 @@ function App() {
     
     let favouritedMovies = favourited;
     if (mode) {
-      if(favourited.findIndex(f => f.id === favId) != -1){
+      if(favourited.findIndex(f => f.id === favId) !== -1){
         return;
       }
       else{
         let movieIndex = movies.findIndex(movie => movie.id === favId);
-        if(movieIndex != -1){
+        if(movieIndex !== -1){
           favouritedMovies.push(movies[movieIndex]);
         }
       }
@@ -67,7 +67,7 @@ function App() {
     }
     else{
       let removeIndex = favouritedMovies.findIndex(movie => movie.id === favId);
-      if(removeIndex != -1){
+      if(removeIndex !== -1){
         favouritedMovies = favourited.splice(removeIndex, removeIndex);
       }
     }

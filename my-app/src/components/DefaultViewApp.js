@@ -8,7 +8,7 @@ const DefaultViewApp = props => {
     const [filtered, setFilter] = React.useState(props.movies);
     const [newFavourite, updateFavourite] = React.useState(0);
     useEffect(() => {
-        if(props.search != null && props.search != ""){
+        if(props.search != null && props.search !== ""){
             updateFilter("Title", props.search, 0);
         }
      }, []);
@@ -17,10 +17,10 @@ const DefaultViewApp = props => {
     }
     const updateSort = (mode) => {
         let sortedArray = filtered;
-        if(mode == "Title"){
+        if(mode === "Title"){
             sortedArray = filtered.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0) )
         }
-        else if (mode == "Year"){
+        else if (mode === "Year"){
             sortedArray = filtered.sort((a, b) => { 
                 let dateA = Date.parse(a.release_date);
                 let dateB = Date.parse(b.release_date);
@@ -35,10 +35,10 @@ const DefaultViewApp = props => {
                 }
             });
         }
-        else if (mode == "Rating"){
+        else if (mode === "Rating"){
             sortedArray = filtered.sort((a, b) => (a.ratings.average > b.ratings.average) ? 1 : ((b.ratings.average < a.ratings.average) ? -1 : 0) )
         }
-        else if (mode == "Popularity"){
+        else if (mode === "Popularity"){
             sortedArray = filtered.sort((a, b) => (a.ratings.popularity > b.ratings.popularity) ? 1 : ((b.ratings.popularity < a.ratings.popularity) ? -1 : 0) )
         }
         console.log("test");
@@ -47,35 +47,35 @@ const DefaultViewApp = props => {
     
     const updateFilter = (mode, value, value2) => {
         let filteredMovies = props.movies;
-        if (mode == "Title") {
+        if (mode === "Title") {
             filteredMovies = props.movies.filter(movie => movie.title.toString().toLowerCase().includes(value.toLowerCase()));
             setFilter(filteredMovies);
         }
-        else if (mode == "Genre") {  
+        else if (mode === "Genre") {  
             filteredMovies = props.movies.filter(movie => {
                 let movieDetails = movie.details.genres;
                 if(movie.details.genres){
-                    return movieDetails.some(e => e.name == value)
+                    return movieDetails.some(e => e.name === value)
                 }
                 else{
                     return false;
                 }
             });
         }
-        else if (mode == "Year") {
+        else if (mode === "Year") {
 
             filteredMovies = props.movies.filter(movie => {
                 let date = new Date(value, 0);
                 let date2 = new Date(value2, 0);
                 let movieDate = Date.parse(movie.release_date);
-                if((isNaN(value) || value == "") && (isNaN(value2) || value2 == "")){
+                if((isNaN(value) || value === "") && (isNaN(value2) || value2 === "")){
           
                     return true;
                 }
-                if(value == "" || isNaN(value)){
+                if(value === "" || isNaN(value)){
                     return (date2 >= movieDate)
                 }
-                else if(value2 == "" || isNaN(value2)){
+                else if(value2 === "" || isNaN(value2)){
 
                     return (date <= movieDate)
                 }
@@ -86,15 +86,15 @@ const DefaultViewApp = props => {
 
             });
         }
-        else if(mode == "Rating"){
+        else if(mode === "Rating"){
             filteredMovies = props.movies.filter(movie => {
-                if((isNaN(value) || value == "") && (isNaN(value2) || value2 == "")){
+                if((isNaN(value) || value === "") && (isNaN(value2) || value2 === "")){
                     return true;
                 }
-                if(isNaN(value) || value == ""){
+                if(isNaN(value) || value === ""){
                     return (movie.rating.average >= value2)
                 }
-                else if(isNaN(value2) || value2 == ""){
+                else if(isNaN(value2) || value2 === ""){
                     return (movie.rating.average <= value)
                 }
                 else{
