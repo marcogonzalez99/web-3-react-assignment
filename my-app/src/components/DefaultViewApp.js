@@ -62,20 +62,20 @@ const DefaultViewApp = props => {
                 }
             });
         }
-        else if (mode === "Year") {
+        else if (mode == "Year") {
 
             filteredMovies = props.movies.filter(movie => {
                 let date = new Date(value, 0);
                 let date2 = new Date(value2, 0);
                 let movieDate = Date.parse(movie.release_date);
-                if((isNaN(value) || value === "") && (isNaN(value2) || value2 === "")){
+                if((isNaN(value) || value == "") && (isNaN(value2) || value2 == "")){
           
                     return true;
                 }
-                if(value === "" || isNaN(value)){
+                if(value == "" || isNaN(value)){
                     return (date2 >= movieDate)
                 }
-                else if(value2 === "" || isNaN(value2)){
+                else if(value2 == "" || isNaN(value2)){
 
                     return (date <= movieDate)
                 }
@@ -86,15 +86,15 @@ const DefaultViewApp = props => {
 
             });
         }
-        else if(mode === "Rating"){
+        else if(mode == "Rating"){
             filteredMovies = props.movies.filter(movie => {
-                if((isNaN(value) || value === "") && (isNaN(value2) || value2 === "")){
+                if((isNaN(value) || value == "") && (isNaN(value2) || value2 == "")){
                     return true;
                 }
-                if(isNaN(value) || value === ""){
+                if(isNaN(value) || value == ""){
                     return (movie.rating.average >= value2)
                 }
-                else if(isNaN(value2) || value2 === ""){
+                else if(isNaN(value2) || value2 == ""){
                     return (movie.rating.average <= value)
                 }
                 else{
