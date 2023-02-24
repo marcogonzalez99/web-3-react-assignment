@@ -24,13 +24,13 @@ const SingleMovieList = props => {
             <td className='text-2xl text-center'>{year}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.average}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.count}</td>
-            <div className='relative top-[86px] right-2 rounded bg-[#3aafa9] pt-2 px-2'>
-                <td className='text-2xl '><button onClick={() => 
+            <td className='relative right-2 rounded pt-2 px-2'>
+                <div className='text-2xl pt-2 px-1 mb-2 bg-[#3aafa9] hover:bg-sky-700 rounded hover:cursor-pointer'><button onClick={() => 
                     { 
                         props.updateFavourites(props.movie.id, 1);
                         props.setNewFavourite();
                         handleSnackBarClick();
-                    }}><img className='w-10 h-8 ' src={heart} alt={props.movie.title}></img></button></td>
+                    }}><img className='w-10 h-8 ' src={heart} alt={props.movie.title}></img></button></div>
                 {
                     snackBarIsOpen && (
                         <div className="bg-gray-800 text-white py-5 px-10 rounded-md shadow-md mt-4 fixed top-[100px] right-1/2">
@@ -38,7 +38,7 @@ const SingleMovieList = props => {
                             <span> is in your Favourites</span>
                         </div>
                 )}
-            </div>
+            </td>
             
             <td className='text-2xl text-white'>
                 <Link to="/singleView">
