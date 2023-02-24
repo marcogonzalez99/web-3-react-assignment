@@ -1,5 +1,6 @@
 // Import React
 import React, { useState} from 'react';
+import { Link } from 'react-router-dom';
 const DefaultViewFav = props => {
     const imgURL = `https://image.tmdb.org/t/p/w92`
     const [hover, setHover] = useState(false);
@@ -21,7 +22,9 @@ const DefaultViewFav = props => {
         <div key={index}>
             <div className='px-4 py-3 my-3 mx-3 flex items-center bg-gray-300 rounded relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <span>
-                    <img className='relative inline-block' src={`${imgURL}${m.poster}`} alt={m.title} ></img>
+                    <Link to='/singleView'>
+                        <img onClick={props.handleSelectMovie(m.id)}className='relative inline-block' src={`${imgURL}${m.poster}`} alt={m.title} ></img>
+                    </Link>
                     {hover && (
                         <button onClick ={() =>{
                             props.updateFavourites(m.id, 0);

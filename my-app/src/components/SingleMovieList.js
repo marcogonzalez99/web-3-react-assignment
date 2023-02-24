@@ -7,7 +7,7 @@ const SingleMovieList = props => {
 
     // This will handle place holder errors, source code from https://stackoverflow.com/questions/34097560/react-js-replace-img-src-onerror
     const [imageSRC, setImageSRC] = useState(`https://image.tmdb.org/t/p/w92${props.movie.poster}`)
-    const placeHolderIMG = `https://via.placeholder.com/w92`;
+    const placeHolderIMG = `https://via.placeholder.com/92`;
 
     const handleImageError = () => {
         setImageSRC(placeHolderIMG);
