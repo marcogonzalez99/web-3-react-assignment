@@ -39,10 +39,11 @@ const DefaultViewApp = props => {
             sortedArray = filtered.sort((a, b) => (a.ratings.average > b.ratings.average) ? 1 : ((b.ratings.average < a.ratings.average) ? -1 : 0) )
         }
         else if (mode === "Popularity"){
-            sortedArray = filtered.sort((a, b) => (a.ratings.popularity > b.ratings.popularity) ? 1 : ((b.ratings.popularity < a.ratings.popularity) ? -1 : 0) )
+            sortedArray = filtered.sort((a, b) => (a.ratings.count > b.ratings.count) ? 1 : ((a.ratings.count < b.ratings.count) ? -1 : 0) )
         }
-        console.log("test");
+        console.log("??");
         setFilter(sortedArray);
+        updateFavourite(newFavourite + 1);
     }
     
     const updateFilter = (mode, value, value2) => {
