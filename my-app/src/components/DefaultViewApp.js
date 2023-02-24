@@ -59,7 +59,7 @@ const DefaultViewApp = props => {
             filteredMovies = props.movies.filter(movie => {
                 let movieDetails = movie.details.genres;
                 if(movie.details.genres){
-                    return movieDetails.some(e => e.name === value)
+                    return movieDetails.some(e => e.name.toString().toLowerCase() == value.toLowerCase());
                 }
                 else{
                     return false;
