@@ -5,8 +5,14 @@ import { Link } from 'react-router-dom';
 
 const SingleMovieList = props => {
 
-    // This creates a poster image for every movie,
-    const imgURL = `https://image.tmdb.org/t/p/w92${props.movie.poster}`;
+    // This will handle place holder errors, source code from https://stackoverflow.com/questions/34097560/react-js-replace-img-src-onerror
+    const [imageSRC, setImageSRC] = useState(`https://image.tmdb.org/t/p/w92${props.movie.poster}`)
+    const placeHolderIMG = `https://via.placeholder.com/w92`;
+
+    const handleImageError = () => {
+        setImageSRC(placeHolderIMG);
+    }
+
     // Slicing the release_date to only have the year of the movie
     const year = props.movie.release_date.slice(0,4);
     // Creating a state for the Snackbar icon, this idea was grabbed from Lab 10
@@ -19,7 +25,7 @@ const SingleMovieList = props => {
     
     return (
         <tr className='border-t-4 border-b-4'>
-            <td className='text-sm p-10'><img src={imgURL} alt={props.movie.title}></img></td>
+            <td className='text-sm p-10'><img src={imageSRC} alt={props.movie.title} onError={handleImageError}></img></td>
             <td className='text-2xl w-1'>{props.movie.title}</td>
             <td className='text-2xl text-center'>{year}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.average}</td>

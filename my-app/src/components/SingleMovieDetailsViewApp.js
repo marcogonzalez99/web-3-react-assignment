@@ -50,6 +50,7 @@ const SingleMovieDetailsView = (props) => {
     const IMDB = `https://www.imdb.com/title/${props.movie.imdb_id}`;
     const revenueToString = props.movie.revenue.toLocaleString();
     const ratingsToString = props.movie.ratings.count.toLocaleString();
+
     return (
         <div className="flex h-screen">
             <div className="w-1/3 h-full p-2 bg-gray-200">
@@ -88,6 +89,14 @@ const SingleMovieDetailsView = (props) => {
                     <div className="flex items-center mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Revenue:</span>
                         <span>${revenueToString}</span>
+                    </div>
+                    <div className="flex items-center mb-4">
+                        <span className="mr-2 text-gray-700 font-semibold">Genres:</span>
+                        <span>
+                            <ul>
+                                {props.movie.details.genres.map(genres => <span key={genres.id}>{genres.name} - </span>)}
+                            </ul>
+                        </span>
                     </div>
                 </div>
 

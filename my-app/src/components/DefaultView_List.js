@@ -11,10 +11,10 @@ const DefaultViewList = props => {
                 <thead className='text-2xl'>
                     <tr>
                         <th></th>
-                        <th className='pr-96' onClick={props.updateSort("Title")}>Title</th>
-                        <th className='px-5' onClick={props.updateSort("Year")}>Year</th>
-                        <th className='px-5' onClick={props.updateSort("Rating")}>Rating</th>
-                        <th className='px-5' onClick={props.updateSort("Popularity")}>Popularity</th>
+                        <th className='pr-96 hover:cursor-pointer' onClick={props.updateSort("Title")}>Title</th>
+                        <th className='px-5 hover:cursor-pointer' onClick={props.updateSort("Year")}>Year</th>
+                        <th className='px-5 hover:cursor-pointer' onClick={props.updateSort("Rating")}>Rating</th>
+                        <th className='px-5 hover:cursor-pointer' onClick={props.updateSort("Popularity")}>Popularity</th>
                         <th></th>
                         <th></th>
                     </tr>
