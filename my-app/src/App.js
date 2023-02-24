@@ -17,7 +17,6 @@ function App() {
   const [search, setSearch] = useState("");
   const [favourited, setFavourites] = React.useState([]);
 
- 
   // To set the new movie
   const [selectedMovie, setSelectedMovie] = useState(movies.find(movie => movie.id === 13));
   // Function to retrive the movie data
@@ -38,7 +37,16 @@ function App() {
           else {
             data = JSON.parse(dataJson);
           }
-          setMovies(data);
+          const sortedMovies = data.sort((a,b) => {
+            if (a.title < b.title) {
+              return -1;
+            } else if (a.title > b.title) {
+              return 1;
+            } else {
+              return 0;
+            }
+          });  
+          setMovies(sortedMovies);
         }
         catch (err) {
           console.error(err);
@@ -47,9 +55,11 @@ function App() {
     };
     getData();
   }, [movies.length]);
+
   const updateSearch = (searchTerm) => {
     setSearch(searchTerm);
   }
+
   const updateFavourites = (favId, mode) =>{
     
     let favouritedMovies = favourited;
@@ -72,7 +82,8 @@ function App() {
       }
     }
     setFavourites(favouritedMovies);
-}
+  }
+
   function handleSelectMovie(id) {
     const movie = movies.find(movie => movie.id === id);
     setSelectedMovie(movie);
@@ -85,7 +96,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home updateSearch={updateSearch}/>}></Route>
         <Route path='/home' element={<Home updateSearch={updateSearch}/>}></Route>
-        <Route path='/browse' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie} />}></Route>
+        <Route path='/browse' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie}/>}></Route>
         <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie} updateFavourites={updateFavourites}/>}></Route>
         <Route path='/browseSearch' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie} search={search}/>}></Route>
       </Routes>
