@@ -16,6 +16,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [favourited, setFavourites] = React.useState([]);
+
  
   // To set the new movie
   const [selectedMovie, setSelectedMovie] = useState(movies.find(movie => movie.id === 13));
@@ -46,6 +47,9 @@ function App() {
     };
     getData();
   }, []);
+  const updateSearch = (searchTerm) => {
+    setSearch(searchTerm);
+  }
   const updateFavourites = (favId, mode) =>{
     
     let favouritedMovies = favourited;
@@ -79,10 +83,11 @@ function App() {
     <main>
       <HeaderApp />
       <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/home' element={<Home />}></Route>
+        <Route path='/' element={<Home updateSearch={updateSearch}/>}></Route>
+        <Route path='/home' element={<Home updateSearch={updateSearch}/>}></Route>
         <Route path='/browse' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie} />}></Route>
         <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie} updateFavourites={updateFavourites}/>}></Route>
+        <Route path='/browseSearch' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie} search={search}/>}></Route>
       </Routes>
     </main>
   );

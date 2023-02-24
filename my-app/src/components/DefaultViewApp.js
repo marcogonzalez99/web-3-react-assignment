@@ -7,9 +7,42 @@ const DefaultViewApp = props => {
     // React controlled form for handling the filter
     const [filtered, setFilter] = React.useState(props.movies);
     const [newFavourite, updateFavourite] = React.useState(0);
-
+    useEffect(() => {
+        if(props.search != null && props.search != ""){
+            updateFilter("Title", props.search, 0);
+        }
+     }, []);
     const setNewFavourite = () => {
         updateFavourite(newFavourite + 1);
+    }
+    const updateSort = (mode) => {
+        let sortedArray = filtered;
+        if(mode == "Title"){
+            sortedArray = filtered.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0) )
+        }
+        else if (mode == "Year"){
+            sortedArray = filtered.sort((a, b) => { 
+                let dateA = Date.parse(a.release_date);
+                let dateB = Date.parse(b.release_date);
+                if(dateA > dateB){
+                    return 1;
+                } 
+                else if (dateB > dateA){
+                    return -1;
+                }
+                else{
+                    return 0;
+                }
+            });
+        }
+        else if (mode == "Rating"){
+            sortedArray = filtered.sort((a, b) => (a.ratings.average > b.ratings.average) ? 1 : ((b.ratings.average < a.ratings.average) ? -1 : 0) )
+        }
+        else if (mode == "Popularity"){
+            sortedArray = filtered.sort((a, b) => (a.ratings.popularity > b.ratings.popularity) ? 1 : ((b.ratings.popularity < a.ratings.popularity) ? -1 : 0) )
+        }
+        console.log("test");
+        setFilter(sortedArray);
     }
     
     const updateFilter = (mode, value, value2) => {
@@ -70,7 +103,6 @@ const DefaultViewApp = props => {
                 
             });
         }
-        console.log(filteredMovies);
         setFilter(filteredMovies);
     }
     return (
@@ -79,7 +111,7 @@ const DefaultViewApp = props => {
                 <DefaultViewFilter updateFilter={updateFilter}/>
             </div>
             <div className='w-7/10 bg-gray-300'>
-                <DefaultViewList handleSelectMovie={props.handleSelectMovie} updateFavourites={props.updateFavourites} movies={filtered} setNewFavourite={setNewFavourite}/>
+                <DefaultViewList handleSelectMovie={props.handleSelectMovie} updateFavourites={props.updateFavourites} movies={filtered} setNewFavourite={setNewFavourite} updateSort={updateSort}/>
             </div>
             <div className=' flex-grow w-1/10 bg-gray-200'>
                 <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited} updateFavourites={props.updateFavourites} setNewFavourite={setNewFavourite}/>
