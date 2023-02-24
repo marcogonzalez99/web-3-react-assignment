@@ -25,8 +25,12 @@ const SingleMovieList = props => {
     
     return (
         <tr className='border-t-4 border-b-4'>
-            <td className='text-sm p-10'><img src={imageSRC} alt={props.movie.title} onError={handleImageError}></img></td>
-            <td className='text-2xl w-1'>{props.movie.title}</td>
+            <td className='text-sm p-10'>
+                <Link to='/singleView'>
+                    <img onClick={() => {props.handleSelectMovie(props.movie.id);}} src={imageSRC} alt={props.movie.title} onError={handleImageError}></img>
+                </Link>
+            </td>
+            <td className='text-2xl w-1' onClick={() => {props.handleSelectMovie(props.movie.id);}}><Link to='/singleView'>{props.movie.title}</Link></td>
             <td className='text-2xl text-center'>{year}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.average}</td>
             <td className='text-2xl text-center'>{props.movie.ratings.count}</td>
