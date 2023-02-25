@@ -6,6 +6,7 @@ Modal.setAppElement('#root'); // Set the modal's parent element
 
 const HeaderMenu = function (props) {
 
+    // Handlers and State for the Modal menu when the user clicks the about button
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => {
@@ -15,10 +16,13 @@ const HeaderMenu = function (props) {
     const closeModal = () => {
         setIsOpen(false);
     }
+
     return (
         <nav className='absolute inset-y-4 right-0 p-3'>
+            {/* A button for the user to open up the about page */}
             <button className='text-xl bg-[#3aafa9] mx-2 px-5 rounded hover:bg-sky-700' onClick={openModal}>About</button>
             <Modal
+            // Sets the modal to open, which covers half the screen and pops up in the middle of the screen
                 isOpen={isOpen}
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
@@ -29,6 +33,7 @@ const HeaderMenu = function (props) {
                         margin: 'auto'
                     }
                 }}>
+                    {/* All Information about the project goes here */}
                     <h1 className='text-3xl font-bold text-black mb-5'>About</h1>
                     <div className="flex items-center mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Group Memebers:</span>
@@ -45,6 +50,7 @@ const HeaderMenu = function (props) {
                     <div className="mb-4">
                         <span className="mr-2 text-gray-700 font-semibold">Third Party Source Code:</span>
                         <div className='flex flex-wrap'>
+                            {/* All links used in this project */}
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://www.npmjs.com/package/react-modal'>React-modal</a></li>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://tailwindcss.com/'>Tailwindcss Docs</a></li>
                             <li className='mr-2'><a className='text-blue-600 text-xl underline' href='https://react-bootstrap.github.io/components/table/'>Tables in React</a></li>

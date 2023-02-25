@@ -127,13 +127,17 @@ const DefaultViewApp = props => {
         setFilter(filteredMovies);
     }
     return (
+        // Creates 3 colums of 20% 60% and 20% width.
         <div className='flex h-5/6'>
+            {/* Column for the Filter */}
             <div className='w-1/5 bg-gray-200'>
                 <DefaultViewFilter updateFilter={updateFilter}/>
             </div>
+            {/* Column for the Movie List */}
             <div className='w-3/5 bg-gray-300'>
                 <DefaultViewList handleSelectMovie={props.handleSelectMovie} updateFavourites={props.updateFavourites} movies={filtered} setNewFavourite={setNewFavourite} updateSort={updateSort}/>
             </div>
+            {/* Column for the list of movies the user adds to their favourites */}
             <div className='w-1/5 bg-gray-200'>
                 <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited} updateFavourites={props.updateFavourites} setNewFavourite={setNewFavourite}/>
             </div>
