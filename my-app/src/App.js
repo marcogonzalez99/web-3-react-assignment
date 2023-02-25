@@ -55,11 +55,19 @@ function App() {
     };
     getData();
   }, [movies.length]);
-
+  /**
+   * Function to update the search term, functions the same as title filter.
+   * @param {*} searchTerm Search term to filter movies by.
+   */
   const updateSearch = (searchTerm) => {
     setSearch(searchTerm);
   }
-
+/**
+ * Function to add OR remove favourite, 
+ * @param {*} favId ID of movie to add / remove.
+ * @param {*} mode Value to either add or remove the favourite, 0 being to remove and 1 being to add.
+ * @returns 
+ */
   const updateFavourites = (favId, mode) =>{
     let favouritedMovies = favourited;
     if (mode == 1) {
@@ -67,6 +75,7 @@ function App() {
         return;
       }
       else{
+        //Find movie index to add. 
         let movieIndex = movies.findIndex(movie => movie.id === favId);
         if(movieIndex != -1){
           favouritedMovies.push(movies[movieIndex]);
@@ -75,6 +84,7 @@ function App() {
         
     }
     else{
+      //Find movie index to remove. 
       let removeIndex = favourited.findIndex(movie => movie.id == favId);
       if(removeIndex != -1){
         favouritedMovies.splice(removeIndex, 1);
@@ -82,7 +92,7 @@ function App() {
     }
     setFavourites(favouritedMovies);
   }
-
+  /** */
   function handleSelectMovie(id) {
     const movie = movies.find(movie => movie.id === id);
     setSelectedMovie(movie);

@@ -3,9 +3,13 @@ import React, { useEffect } from 'react';
 import DefaultViewFav from './DefaultView_Fav.js'
 import DefaultViewFilter from './DefaultView_Filter.js'
 import DefaultViewList from './DefaultView_List.js'
+//Default
 const DefaultViewApp = props => {
     // React controlled form for handling the filter
     const [filtered, setFilter] = React.useState(props.movies);
+    /*
+    State variable to handle update of favourite, forces re-render.
+    */
     const [newFavourite, updateFavourite] = React.useState(0);
     /*
     useEffect(() => {
@@ -15,10 +19,16 @@ const DefaultViewApp = props => {
      }, []);
      */
 
+     /**
+      * Updates favourite state to force re-render.
+      */
     const setNewFavourite = () => {
         updateFavourite(newFavourite + 1);
     }
-    
+    /**
+     * 
+     * @param {string} mode     Variable that chooses which  to sort by, either title, year, rating or genre.
+     */
     const updateSort = (mode) => {
         let sortedArray = filtered;
         if(mode === "Title"){
@@ -48,7 +58,12 @@ const DefaultViewApp = props => {
         setFilter(sortedArray);
         updateFavourite(newFavourite + 1);
     }
-    
+    /**
+     * 
+     * @param {*} mode Variable that chooses which  to filter , either title, year, rating or genre.
+     * @param {*} value First value of filter upper end of numerical filters or title/genre
+     * @param {*} value2 Second optional value, lower end of numerical filter.
+     */
     const updateFilter = (mode, value, value2) => {
         let filteredMovies = props.movies;
         if (mode === "Title") {
@@ -69,6 +84,7 @@ const DefaultViewApp = props => {
         else if (mode === "Year") {
 
             filteredMovies = props.movies.filter(movie => {
+                //Assign both values to dates then compare movie array to it.
                 let date = new Date(value, 0);
                 let date2 = new Date(value2, 0);
                 let movieDate = Date.parse(movie.release_date);
@@ -91,6 +107,7 @@ const DefaultViewApp = props => {
             });
         }
         else if(mode === "Rating"){
+            //Check if rating values are valid, then filter for movies that fall into range. 
             filteredMovies = props.movies.filter(movie => {
                 if((isNaN(value) || value === "") && (isNaN(value2) || value2 === "")){
                     return true;

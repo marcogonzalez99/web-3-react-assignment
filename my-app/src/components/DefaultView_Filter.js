@@ -1,6 +1,6 @@
 // Import React
 import React, { useEffect, useRef } from 'react';
-
+//Component for filter menu.
 const DefaultViewFilter = props => {
     const [filter, setFilter] = React.useState("0");
     const [filteredValue, setFilterValue] = React.useState("");
@@ -13,7 +13,10 @@ const DefaultViewFilter = props => {
     const ratingLesser = useRef(null);
     
     
-
+    /**
+     * Function to reset input fields after selecting new filter.
+     * @param {*} e Event
+     */
     function selectFilter (e) {
         setFilterValue("");
         setSecondFilter("");
@@ -25,16 +28,23 @@ const DefaultViewFilter = props => {
         ratingLesser.current.value = "";
         setFilter(e.target.value);
     }
+    /**
+     * Function to handle the submit of the filter details.
+     * @param {*} e 
+     */
     function submit (e){
         e.preventDefault();
         props.updateFilter(filter, filteredValue, filterSecond);
     }
+    //Function to change value of first filter.
     function changeValue (e) {
         setFilterValue(e.target.value);
     }
+    //Function to change value of second filter value
     function changeFilterTwo (e) {
         setSecondFilter(e.target.value);
     }
+    //Clear The filter.
     function clear (e){
         e.preventDefault();
         props.updateFilter("Default", 0, 0);

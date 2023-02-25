@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = props => {
+    //Function to handle the update of the search bar.
     function search (e){
         props.updateSearch(e.target.value);
     }
