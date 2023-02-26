@@ -11,6 +11,13 @@ const DefaultViewApp = props => {
     State variable to handle update of favourite, forces re-render.
     */
     const [newFavourite, updateFavourite] = React.useState(0);
+    
+    // Fav Collapse
+    const [favCollapsed, setFavCollapsed] = React.useState(false);
+
+    // Filter Collapse
+    const [filterCollapsed, setFilterCollapsed] = React.useState(false);
+
     /*
     useEffect(() => {
         if(props.search != null && props.search !== ""){
@@ -130,17 +137,52 @@ const DefaultViewApp = props => {
         // Creates 3 colums of 20% 60% and 20% width.
         <div className='flex h-5/6'>
             {/* Column for the Filter */}
-            <div className='w-1/5 bg-gray-200'>
-                <DefaultViewFilter updateFilter={updateFilter}/>
+            <div className="w-1/5 mb-5">
+                <div className="w-1/5 bg-gray-200 relative hover:bg-gray-400 ml-auto mr-4">
+                    <button
+                    className="w-full text-left py-2 px-4 font-bold"
+                    onClick={() => setFilterCollapsed(!filterCollapsed)}
+                    >
+                    {filterCollapsed ? 'Show' : 'Hide'}
+                    </button>
+                </div>
+                <div>
+                    {!filterCollapsed && (
+                    <div className=" px-4 bg-white">
+                        <div className='bg-gray-200 pb-10'>
+                            <DefaultViewFilter updateFilter={updateFilter}/>
+                        </div>
+                    </div>
+                    )}
+                </div>
             </div>
+            
             {/* Column for the Movie List */}
             <div className='w-3/5 bg-gray-300'>
                 <DefaultViewList handleSelectMovie={props.handleSelectMovie} updateFavourites={props.updateFavourites} movies={filtered} setNewFavourite={setNewFavourite} updateSort={updateSort}/>
             </div>
+
             {/* Column for the list of movies the user adds to their favourites */}
-            <div className='w-1/5 bg-gray-200'>
-                <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited} updateFavourites={props.updateFavourites} setNewFavourite={setNewFavourite}/>
+            <div className="w-1/5">
+                <div className="w-1/5 bg-gray-200 relative hover:bg-gray-400 ml-4">
+                    <button
+                    className="w-full text-left py-2 px-4 font-bold"
+                    onClick={() => setFavCollapsed(!favCollapsed)}
+                    >
+                    {favCollapsed ? 'Show' : 'Hide'}
+                    </button>
+                </div>
+                <div>
+                    {!favCollapsed && (
+                    <div className=" px-4 bg-white">
+                        <div className='bg-gray-200'>
+                            <DefaultViewFav handleSelectMovie={props.handleSelectMovie} favourited={props.favourited} updateFavourites={props.updateFavourites} setNewFavourite={setNewFavourite}/>
+                        </div>
+                    </div>
+                    )}
+                </div>
             </div>
+            
         </div>
     )
 }
