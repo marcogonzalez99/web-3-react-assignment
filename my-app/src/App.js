@@ -103,7 +103,7 @@ function App() {
     <main>
       <HeaderApp />
       <Routes>
-        <Route path='/' element={<Home updateSearch={updateSearch}/>}></Route>
+        {/* <Route path='/' element={<Home updateSearch={updateSearch}/>}></Route> */}
         <Route path='/home' element={<Home updateSearch={updateSearch}/>}></Route>
         <Route path='/browse' element ={<DefaultViewApp movies={movies} favourited = {favourited} updateFavourites={updateFavourites} handleSelectMovie={handleSelectMovie}/>}></Route>
         <Route path='/singleView' element={<SingleMovieDetailsView movie={selectedMovie} updateFavourites={updateFavourites}/>}></Route>
