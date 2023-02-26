@@ -50,7 +50,7 @@ const DefaultViewApp = props => {
             });
         }
         else if (mode === "Rating"){
-            sortedArray = filtered.sort((a, b) => (a.ratings.average > b.ratings.average) ? 1 : ((b.ratings.average < a.ratings.average) ? -1 : 0) )
+            sortedArray = filtered.sort((a, b) => (a.ratings.average > b.ratings.average) ? 1 : ((a.ratings.average < b.ratings.average) ? -1 : 0) )
         }
         else if (mode === "Popularity"){
             sortedArray = filtered.sort((a, b) => (a.ratings.count > b.ratings.count) ? 1 : ((a.ratings.count < b.ratings.count) ? -1 : 0) )
@@ -113,10 +113,10 @@ const DefaultViewApp = props => {
                     return true;
                 }
                 if(isNaN(value) || value === ""){
-                    return (movie.rating.average >= value2)
+                    return (movie.ratings.average <= value2)
                 }
                 else if(isNaN(value2) || value2 === ""){
-                    return (movie.rating.average <= value)
+                    return (movie.ratings.average >= value)
                 }
                 else{
                     return (movie.ratings.average >= value && movie.ratings.average <= value2)
