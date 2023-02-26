@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d build"
 
   },
-  "homepage": "https://marcogonzalez99.github.io/web-3-react-assignment/",
+  "homepage": "https://marcogonzalez99.github.io/web-3-react-assignment/home",
   "eslintConfig": {
     "extends": [
       "react-app",

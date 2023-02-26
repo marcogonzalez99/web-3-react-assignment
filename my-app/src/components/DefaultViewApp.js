@@ -1,8 +1,8 @@
 // Import React
 import React, { useEffect } from 'react';
-import DefaultViewFav from './DefaultView_Fav.js'
-import DefaultViewFilter from './DefaultView_Filter.js'
-import DefaultViewList from './DefaultView_List.js'
+import DefaultViewFav from './DefaultView_Fav.js';
+import DefaultViewFilter from './DefaultView_Filter.js';
+import DefaultViewList from './DefaultView_List.js';
 //Default
 const DefaultViewApp = props => {
     // React controlled form for handling the filter
@@ -18,13 +18,13 @@ const DefaultViewApp = props => {
     // Filter Collapse
     const [filterCollapsed, setFilterCollapsed] = React.useState(false);
 
-    /*
+    
     useEffect(() => {
         if(props.search != null && props.search !== ""){
             updateFilter("Title", props.search, 0);
         }
      }, []);
-     */
+    
 
      /**
       * Updates favourite state to force re-render.
@@ -81,7 +81,7 @@ const DefaultViewApp = props => {
             filteredMovies = props.movies.filter(movie => {
                 let movieDetails = movie.details.genres;
                 if(movie.details.genres){
-                    return movieDetails.some(e => e.name.toString().toLowerCase() == value.toLowerCase());
+                    return movieDetails.some(e => e.name.toString().toLowerCase() === value.toLowerCase());
                 }
                 else{
                     return false;

@@ -70,14 +70,14 @@ function App() {
  */
   const updateFavourites = (favId, mode) =>{
     let favouritedMovies = favourited;
-    if (mode == 1) {
+    if (mode === 1) {
       if(favourited.findIndex(f => f.id === favId) !== -1){
         return;
       }
       else{
         //Find movie index to add. 
         let movieIndex = movies.findIndex(movie => movie.id === favId);
-        if(movieIndex != -1){
+        if(movieIndex !== -1){
           favouritedMovies.push(movies[movieIndex]);
         }
       }
@@ -85,8 +85,8 @@ function App() {
     }
     else{
       //Find movie index to remove. 
-      let removeIndex = favourited.findIndex(movie => movie.id == favId);
-      if(removeIndex != -1){
+      let removeIndex = favourited.findIndex(movie => movie.id === favId);
+      if(removeIndex !== -1){
         favouritedMovies.splice(removeIndex, 1);
       }
     }

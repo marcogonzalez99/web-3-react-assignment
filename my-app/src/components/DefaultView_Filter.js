@@ -1,5 +1,5 @@
 // Import React
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 //Component for filter menu.
 const DefaultViewFilter = props => {
     const [filter, setFilter] = React.useState("0");

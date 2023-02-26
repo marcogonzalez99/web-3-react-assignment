@@ -29,7 +29,7 @@ const DefaultViewFav = props => {
                 <span>
                     {/* Links to the single view when the user clicks the poster image */}
                     <Link to='/singleView'>
-                        <img onClick={props.handleSelectMovie(m.id)}className='relative inline-block' src={`${imgURL}${m.poster}`} alt={m.title} ></img>
+                        <img onClick={() => props.handleSelectMovie(m.id)}className='relative inline-block' src={`${imgURL}${m.poster}`} alt={m.title} ></img>
                     </Link>
                     {/* when the user is hovering over the block, a button will pop up on the corner of the block inidcating a remove button */}
                     {hover && (

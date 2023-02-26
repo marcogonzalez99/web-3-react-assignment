@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const SingleMovieList = props => {
 
     // This will handle place holder errors, source code from https://stackoverflow.com/questions/34097560/react-js-replace-img-src-onerror
-    const [imageSRC, setImageSRC] = useState(`{props.movie.poster}`)
+    //const [imageSRC, setImageSRC] = useState(`{props.movie.poster}`)
     const placeHolderIMG = `https://via.placeholder.com/92`;
 
     const handleImageError = (e) => {
