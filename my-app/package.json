@@ -10,7 +10,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.8.1",
+    "react-router-dom": "^6.8.2",
     "react-scripts": "^5.0.1",
     "tailwindcss": "^3.2.6",
     "web-vitals": "^2.1.4"
@@ -23,7 +23,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://marcogonzalez99.github.io/web-3-react-assignment/",
+  "homepage": "https://marcogonzalez99.github.io/web-3-react-assignment/home",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
