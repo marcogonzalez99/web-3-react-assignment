@@ -60,7 +60,7 @@ const SingleMovieDetailsView = (props) => {
             {/* A third of the screen for the poster image, which comes with a Modal function if the image is clicked */}
             <div className="w-1/3 h-full p-2 bg-gray-200">
                 <h1 className='pl-10 text-4xl font-bold pt-5'>{props.movie.title}</h1>
-                <img className='pl-10 pt-5 hover:cursor-pointer' src={imgURL} alt={props.movie.title} onClick={openModal}></img>
+                <img className='pl-10 pt-5' src={imgURL} alt={props.movie.title} onClick={openModal}></img>
                 {/* When the user clicks on the poster image, a larger view of it will pop up, which can be closed by the user */}
                 <Modal
                 isOpen={isOpen}
